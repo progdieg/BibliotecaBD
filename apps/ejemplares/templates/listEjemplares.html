@@ -13,12 +13,26 @@
                 <th scope="col">Localizacion</th>
             </tr>
         </thead>
+        
         <tbody>
-            <tr>
-                <td scope="row"></td>
-                <td></td>
-                <td></td>
-            </tr>
+            {% if ejemplares %}
+                {% for ejemplar in ejemplares %}
+                    <tr>
+                        <td>{{ejemplar.id}}</td>
+                        <td>{{ejemplar.libro}}</td>
+                        <td>{{ejemplar.localizacion}}</td>
+                        <td>
+                            <a name="" id="" class="btn btn-primary" href="{% url 'ejemplares:ejemplarCreate'%}" role="button">Adicionar</a>
+                            <a name="" id="" class="btn btn-danger" href="#" role="button">Borrar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="3">No hay ejemplares almacenados ......</td>
+                    </tr>
+            {%endif%}
+
         </tbody>
     </table>
     
